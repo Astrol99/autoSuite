@@ -1,31 +1,32 @@
-(function (){
-    browser.tabs.query({currentWindow: true, active: true})
-      .then((tabs) => {
-        let activeTab = tabs[0].url;
-
-        if (activeTab.substring(0, 41) != "https://www.myon.com/reader/index.html?a=") {
-            browser.browserAction.setPopup({popup: "../home.html"})
-        }
-    })
-})();
-
+// Init variables
 let readTime = parseInt(document.getElementById("readTime"));
 let delayTime = parseInt(document.getElementById("delayTime"));
-let startBtn = document.getElementById("startBtn");
+let button = document.getElementById("startBtn");
 let enable = false;
 
-startBtn.addEventListener("click", function (){
-    changeBtn(startBtn);
-})
+function getActiveTab() { 
+    return browser.tabs.query({active:true, currentWindow: true}); 
+}
 
-function changeBtn(startBtn) {
+// Check if url is not myOn
+getActiveTab().then((tabs) => {
+    if (!tabs[0].url.includes("https://www.myon.com/reader/index.html?a=")) {
+        browser.browserAction.setPopup("../home.html");
+    }
+});
+
+button.onclick = function(e) {
     enable = !enable;
 
     if (enable){
-        startBtn.innerHTML = "Stop Auto Read";
-        startBtn.id = "clickedStartBtn";
+        button.innerHTML = "Stop Auto Read";
+        button.setAttribute("id", "clickedStartBtn");
+
+        getActiveTab().then((tabs) => {
+            browser.tabs.sendMessage(tabs[0].id, {txt: "IT WORKED"});
+        });
     } else if (!enable) {
-        startBtn.innerHTML = "Start Auto Read";
-        startBtn.id = "startBtn";
+        button.innerHTML = "Start Auto Read";
+        button.setAttribute("id", "startBtn");
     }
 }
