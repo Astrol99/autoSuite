@@ -8,3 +8,24 @@
         }
     })
 })();
+
+let readTime = parseInt(document.getElementById("readTime"));
+let delayTime = parseInt(document.getElementById("delayTime"));
+let startBtn = document.getElementById("startBtn");
+let enable = false;
+
+startBtn.addEventListener("click", function (){
+    changeBtn(startBtn);
+})
+
+function changeBtn(startBtn) {
+    enable = !enable;
+
+    if (enable){
+        startBtn.innerHTML = "Stop Auto Read";
+        startBtn.id = "clickedStartBtn";
+    } else if (!enable) {
+        startBtn.innerHTML = "Start Auto Read";
+        startBtn.id = "startBtn";
+    }
+}
