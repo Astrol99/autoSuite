@@ -4,9 +4,32 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>autoSuite | myOn</title>
+    <link rel="stylesheet" type="text/css" href="../home.css">
+    <link rel="stylesheet" type="text/css" href="myonPopup.css">
 </head>
 <body>
-    <h1>myOn</h1>
+    <div class="heading">
+        <h1>autoSuite | myOn</h1>
+    </div>
+    <div class="content">
+        <p>Select the parameters below in order to start auto reading</p>
+        <div class="widgets">
+            <div class="parameters">
+                <div class="minuteWidget">
+                    <label for="readTime"><b>Minutes to read</b><br></label>
+                    <input type="number" id="readTime" name="readTime" min="1" max="1000">
+                </div>
+                <div class="delayWidget">
+                    <label for="delayTime"><b>Seconds to delay per page</b><br></label>
+                    <input type="number" id="delayTime" name="delayTime" min="1" max="100"> 
+                </div>
+            </div>
+        </div>
+        <div class="btnPos">
+            <button type="button" id="startBtn">Start Auto Read</button>
+    
+        </div>
+    </div>
     <script src="myonPopup.js"></script>
 </body>
 </html>
