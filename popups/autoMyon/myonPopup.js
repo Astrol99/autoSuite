@@ -1,8 +1,5 @@
-// Init variables
-let readTime = parseInt(document.getElementById("readTime"));
-let delayTime = parseInt(document.getElementById("delayTime"));
 let button = document.getElementById("startBtn");
-let enable = false;
+let signal = false;
 
 function getActiveTab() { 
     return browser.tabs.query({active:true, currentWindow: true}); 
@@ -15,18 +12,26 @@ getActiveTab().then((tabs) => {
     }
 });
 
-button.onclick = function(e) {
-    enable = !enable;
+button.onclick = function() {
+    signal = !signal;
 
-    if (enable){
+    let readTime = parseInt(document.getElementById("readTime").value);
+    let delayTime = parseInt(document.getElementById("delayTime").value);
+
+    if (signal){
         button.innerHTML = "Stop Auto Read";
         button.setAttribute("id", "clickedStartBtn");
 
         getActiveTab().then((tabs) => {
-            browser.tabs.sendMessage(tabs[0].id, {txt: "IT WORKED"});
+            browser.tabs.sendMessage(tabs[0].id, {signal, readTime, delayTime});
         });
-    } else if (!enable) {
+
+    } else if (!signal) {
         button.innerHTML = "Start Auto Read";
         button.setAttribute("id", "startBtn");
+
+        getActiveTab().then((tabs) => {
+            browser.tabs.sendMessage(tabs[0].id, {signal, readTime, delayTime});
+        });
     }
 }
