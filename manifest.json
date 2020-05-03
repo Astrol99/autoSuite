@@ -1,0 +1,26 @@
+{
+
+  "name": "autoSuite",
+  "description": "A webextension designed to automate online learning websites",
+  "manifest_version": 2,
+  "version": "0.1",
+  "homepage_url": "https://github.com/Astrol99/autoSuite",
+
+  "permissions": ["tabs"],
+
+  "browser_action": {
+    "default_title": "autoSuite Home",
+    "default_popup": "popups/home.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.myon.com/reader/index.html?a=*"
+      ],
+
+      "js": ["content_scripts/autoMyon.js"]
+    }
+  ]
+  
+}
