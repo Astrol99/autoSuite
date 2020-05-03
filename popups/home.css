@@ -1,0 +1,15 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    border-bottom: 5px solid #42bcf5;
+    background-color: #f5427e;
+    color: #f5d742;
+}
+
+a {
+    color: inherit;
+}
+
+.homeMessage {
+    margin: 10px;
+}
