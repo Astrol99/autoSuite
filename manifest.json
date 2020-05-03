@@ -9,7 +9,7 @@
   "permissions": ["tabs"],
 
   "browser_action": {
-    "default_title": "autoSuite Home",
+    "default_title": "autoSuite | Home",
     "default_popup": "popups/home.html"
   },
 
