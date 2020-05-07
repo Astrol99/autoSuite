@@ -3,7 +3,7 @@
   "name": "autoSuite",
   "description": "A webextension designed to automate online learning websites",
   "manifest_version": 2,
-  "version": "0.1",
+  "version": "0.5",
   "homepage_url": "https://github.com/Astrol99/autoSuite",
 
   "permissions": ["tabs"],
