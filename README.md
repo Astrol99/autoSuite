@@ -1,2 +1,3 @@
 # autoSuite
-A webextension designed to automate online learning websites
+A repo that is used to teach myself how to make extensions
+~A webextension designed to automate online learning websites~
